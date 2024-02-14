@@ -21,9 +21,7 @@ export default defineConfig({
         preload: true,
       },
     }),
-    svgr({
-      include: '**/*.svg?react',
-    }),
+    svgr(),
   ],
 
   // prevent vite from obscuring rust errors
