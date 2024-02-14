@@ -16,6 +16,9 @@
       "window": {
         "startDragging": true
       },
+      "process": {
+        "exit": true
+      },
       "notification": {
         "all": true
       }

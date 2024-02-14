@@ -1,5 +1,6 @@
 import { VariableFC } from '@xenopomp/advanced-types';
 
+import { exit } from '@tauri-apps/api/process';
 import cn from 'classnames';
 import { X } from 'lucide-react';
 
@@ -23,7 +24,12 @@ const Header: VariableFC<'header', HeaderProps, 'children'> = ({
         <TomatoIcon />
       </section>
 
-      <section className={cn(styles.close)}>
+      <section
+        className={cn(styles.close)}
+        onClick={() => {
+          let ignore = exit(1);
+        }}
+      >
         <X width={'0.9375em'} height={'0.9375em'} />
       </section>
     </header>
