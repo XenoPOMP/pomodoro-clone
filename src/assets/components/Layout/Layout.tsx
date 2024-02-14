@@ -4,6 +4,8 @@ import { FC } from 'react';
 
 import GlobalProvider from '@providers/GlobalProvider/GlobalProvider';
 
+import Header from '@ui/Header/Header';
+
 import { LayoutProps } from './Layout.props';
 
 /**
@@ -15,6 +17,8 @@ import { LayoutProps } from './Layout.props';
 const Layout: FC<PropsWith<'children', LayoutProps>> = ({ children }) => {
   return (
     <GlobalProvider>
+      <Header />
+
       <main>{children}</main>
     </GlobalProvider>
   );

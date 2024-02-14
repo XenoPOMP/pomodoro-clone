@@ -59,10 +59,12 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
-        "resizable": true,
+        "resizable": false,
         "title": "Boostrapped with Tauri & React & Vite",
-        "width": 800
+        "height": 326,
+        "width": 502,
+        "decorations": false,
+        "transparent": true
       }
     ]
   }

@@ -3,8 +3,10 @@ import { getObjectKeys } from '@xenopomp/advanced-utils';
 
 import { Config } from 'tailwindcss';
 import tailwindThemer from 'tailwindcss-themer';
+import { ThemeConfig } from 'tailwindcss-themer/lib/utils/optionsUtils';
 
-import { themesMap } from './src/assets/themes';
+import { defaultTheme, lightTheme, themesMap } from './src/assets/themes';
+import { ThemesMap } from './src/assets/types/ThemesMap';
 
 type ThemeMapEntry = RecordValue<typeof themesMap>;
 
@@ -18,6 +20,16 @@ const filterThemes = (filterCallback: (entr: ThemeMapEntry) => boolean) => {
     .filter(filterCallback);
 };
 
+const transformTheme = ({
+  name,
+  theme,
+}: RecordValue<ThemesMap>): ThemeConfig => {
+  return {
+    name,
+    extend: theme,
+  };
+};
+
 const twConfig: Config = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
@@ -26,16 +38,14 @@ const twConfig: Config = {
   plugins: [
     tailwindThemer({
       defaultTheme: {
-        extend: filterThemes(({ isDefault }) => !!isDefault)[0].theme,
+        extend: defaultTheme,
       },
-      themes: filterThemes(({ isDefault }) => !isDefault).map(
-        ({ name, theme }) => ({
-          name,
-          extend: {
-            ...theme,
-          },
-        })
-      ),
+      themes: [
+        {
+          name: themesMap.light.name,
+          extend: lightTheme,
+        },
+      ],
     }),
   ],
 };

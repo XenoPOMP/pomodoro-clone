@@ -1,0 +1,7 @@
+@import "src/assets/styles/templates";
+
+header.appHeader {
+  @extend %draggable;
+
+  background: red;
+}
