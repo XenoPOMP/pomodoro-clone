@@ -19,6 +19,7 @@
     "paths": {
       "@components/*": ["src/assets/components/*"],
       "@assets/*": ["src/assets/*"],
+      "@icons/*": ["src/icons/*"],
       "@api/*": ["src/assets/api"],
       "@contexts/*": ["src/assets/contexts/*"],
       "@pages/*": ["src/assets/pages/*"],

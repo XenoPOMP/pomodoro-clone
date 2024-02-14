@@ -1,3 +1,4 @@
+import TomatoIcon from '@icons/tomato-icon.svg';
 import cn from 'classnames';
 import { ComponentProps, FC } from 'react';
 
@@ -9,6 +10,7 @@ const Header: FC<HeaderProps> = ({}) => {
     <header className={cn(styles.appHeader)} data-tauri-drag-region>
       <section className={cn(styles.logo)} data-tauri-drag-region>
         Pomogenius
+        <TomatoIcon />
       </section>
     </header>
   );
