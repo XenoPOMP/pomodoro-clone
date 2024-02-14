@@ -1,4 +1,4 @@
-import TomatoIcon from '@icons/tomato-icon.svg';
+import TomatoIcon from '@icons/tomato-icon.svg?react';
 import cn from 'classnames';
 import { ComponentProps, FC } from 'react';
 
