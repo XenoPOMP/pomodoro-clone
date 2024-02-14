@@ -1,18 +1,8 @@
-import {
-  type AppSettings,
-  type SystemLike,
-} from '@redux/reducers/appSettingsSlice';
+import { ThemesMap } from '@type/ThemesMap';
 
-import { type CustomTheme, defaultTheme, lightTheme } from '../themes';
+import { defaultTheme, lightTheme } from '../themes';
 
-export const themesMap: Record<
-  Exclude<AppSettings['theme'], SystemLike>,
-  {
-    name: string;
-    theme: CustomTheme;
-    isDefault?: boolean;
-  }
-> = {
+export const themesMap: ThemesMap = {
   dark: {
     name: 'dark-theme',
     theme: defaultTheme,
