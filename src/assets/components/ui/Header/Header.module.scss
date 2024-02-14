@@ -1,5 +1,7 @@
 @import "src/assets/styles/templates";
 
 header.appHeader {
+  @extend %notSelectable;
+
   background: red;
 }
