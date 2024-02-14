@@ -4,6 +4,7 @@ import { themesMap } from '@assets/themes';
 import { FC, useContext, useEffect } from 'react';
 
 import { useAppSelector } from '@redux/hooks';
+import { AppSettings } from '@redux/reducers/appSettingsSlice';
 
 import { BodyClassnameContext } from '@providers/BodyClassnameProvider/BodyClassnameProvider';
 
@@ -20,6 +21,22 @@ const ThemeProvider: FC<PropsWith<'children', {}>> = ({ children }) => {
   useEffect(() => {
     /** Clear all classes. */
     classContext.deleteClasses(contextClassGroupName);
+
+    /** Track for theme changes inside OS. */
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', event => {
+        const newColorScheme: Exclude<AppSettings['theme'], 'system-like'> =
+          event.matches ? 'dark' : 'light';
+
+        if (theme === 'system-like') {
+          classContext.registerClasses(contextClassGroupName, [
+            themesMap[newColorScheme].name,
+          ]);
+
+          return;
+        }
+      });
 
     /** If system like theme is dark: */
     if (theme === 'system-like' && isDarkMode()) {
@@ -46,7 +63,7 @@ const ThemeProvider: FC<PropsWith<'children', {}>> = ({ children }) => {
 
       return;
     }
-  }, []);
+  }, [theme]);
 
   return <>{children}</>;
 };
