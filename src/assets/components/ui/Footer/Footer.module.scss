@@ -1,0 +1,8 @@
+@import "src/assets/styles/templates";
+
+footer.appFooter {
+  @include padding-horizontal(toLocalEm(30, 20));
+
+  padding-top: toLocalEm(15, 20);
+  padding-bottom: toLocalEm(30, 20);
+}
