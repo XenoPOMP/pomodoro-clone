@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider as ReduxProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import 'unfonts.css';
+
+import SplashScreen from '@components/SplashScreen/SplashScreen';
 
 import store, { persistor } from '@redux/index';
 
 import App from './App';
 import './main.scss';
-import SplashScreen from '@components/SplashScreen/SplashScreen';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,5 +29,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         </PersistGate>
       </ReduxProvider>
     </QueryClientProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

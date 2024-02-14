@@ -1,6 +1,7 @@
-import TomatoIcon from '@icons/tomato-icon.svg?react';
 import cn from 'classnames';
 import { ComponentProps, FC } from 'react';
+
+import TomatoIcon from '../../../icons/tomato-icon.svg?react';
 
 import styles from './Header.module.scss';
 import type { HeaderProps } from './Header.props';

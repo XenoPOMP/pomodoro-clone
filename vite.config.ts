@@ -1,11 +1,30 @@
 import react from '@vitejs/plugin-react';
+import Unfonts from 'unplugin-fonts/vite';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tsconfigPaths(), svgr()],
+  plugins: [
+    react(),
+    tsconfigPaths(),
+    Unfonts({
+      custom: {
+        families: [
+          {
+            name: 'Open Sans',
+            src: './src/assets/fonts/Open Sans/OpenSans*',
+            local: 'Open Sans',
+          },
+        ],
+        preload: true,
+      },
+    }),
+    svgr({
+      include: '**/*.svg?react',
+    }),
+  ],
 
   // prevent vite from obscuring rust errors
   clearScreen: false,
