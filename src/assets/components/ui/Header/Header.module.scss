@@ -2,7 +2,7 @@
 
 header.appHeader {
   $em: 16;
-  $pad: toLocalEm(30, $em);
+  $pad: 1.5rem;
 
   @extend %notSelectable;
 

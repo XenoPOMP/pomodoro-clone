@@ -17,4 +17,8 @@
   border-style: solid;
 
   border-radius: 23px;
+
+  main {
+    @include padding-horizontal(1.5rem);
+  }
 }
