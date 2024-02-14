@@ -5,7 +5,7 @@ import styles from './Footer.module.scss';
 import type { FooterProps } from './Footer.props';
 
 const Footer: FC<FooterProps> = ({}) => {
-  return <footer className={cn(styles.appFooter)}>Footer</footer>;
+  return <footer className={cn(styles.appFooter)}></footer>;
 };
 
 export default Footer;
