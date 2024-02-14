@@ -1,0 +1,7 @@
+/*
+  Calculate local em value
+ */
+@function toLocalEm($value, $target) {
+  $remValue: ($value / $target) + em;
+  @return $remValue;
+}

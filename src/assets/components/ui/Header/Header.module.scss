@@ -1,7 +1,19 @@
 @import "src/assets/styles/templates";
 
 header.appHeader {
+  $em: 16;
+  $pad: toLocalEm(30, $em);
+
   @extend %notSelectable;
 
-  background: red;
+  @apply flex justify-between items-center;
+
+  font-size: .8rem; // 1em = 20px
+  padding: $pad $pad toLocalEm(15, $em);
+
+  section.logo {
+    @apply flex items-center;
+
+    gap: toLocalEm(5, $em);
+  }
 }

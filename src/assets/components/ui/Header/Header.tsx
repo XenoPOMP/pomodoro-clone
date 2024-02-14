@@ -7,7 +7,9 @@ import type { HeaderProps } from './Header.props';
 const Header: FC<HeaderProps> = ({}) => {
   return (
     <header className={cn(styles.appHeader)} data-tauri-drag-region>
-      Header (draggable)
+      <section className={cn(styles.logo)} data-tauri-drag-region>
+        Pomogenius
+      </section>
     </header>
   );
 };
