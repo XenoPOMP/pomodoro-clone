@@ -4,6 +4,8 @@ import { exit } from '@tauri-apps/api/process';
 import cn from 'classnames';
 import { X } from 'lucide-react';
 
+import Pressable from '@ui/Pressable/Pressable';
+
 import TomatoIcon from '../../../icons/tomato-icon.svg?react';
 
 import styles from './Header.module.scss';
@@ -24,14 +26,14 @@ const Header: VariableFC<'header', HeaderProps, 'children'> = ({
         <TomatoIcon />
       </section>
 
-      <section
+      <Pressable
         className={cn(styles.close)}
         onClick={() => {
-          let ignore = exit(1);
+          // let ignore = exit(1);
         }}
       >
         <X width={'0.9375em'} height={'0.9375em'} />
-      </section>
+      </Pressable>
     </header>
   );
 };

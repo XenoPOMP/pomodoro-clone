@@ -1,0 +1,7 @@
+button.pressable {
+  transition: scale .15s ease;
+
+  &:active {
+    scale: .925;
+  }
+}

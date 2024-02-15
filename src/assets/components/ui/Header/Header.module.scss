@@ -29,9 +29,7 @@ header.appHeader {
     gap: toLocalEm(5, $em);
   }
 
-  section.close {
+  button.close {
     @include expandButton(5px);
-
-    @apply cursor-pointer;
   }
 }
