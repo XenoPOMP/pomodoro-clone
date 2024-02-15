@@ -2,10 +2,20 @@ import { FC } from 'react';
 
 import Button from '@ui/Button/Button';
 
+import { useTimerStore } from '@hooks/useTimerStore';
+
 const SetupTimerControls: FC<{}> = () => {
+  const { startTimer } = useTimerStore();
+
   return (
     <>
-      <Button>Start</Button>
+      <Button
+        onClick={() => {
+          startTimer();
+        }}
+      >
+        Start
+      </Button>
     </>
   );
 };

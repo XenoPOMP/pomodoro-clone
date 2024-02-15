@@ -51,7 +51,7 @@ export const useTimer = (
     return () => {
       clearInterval(timerId);
     };
-  }, []);
+  }, [isEnabled]);
 
   return {
     time: localTime,

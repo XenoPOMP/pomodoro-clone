@@ -3,6 +3,7 @@ import cn from 'classnames';
 import Page from '@components/Page/Page';
 import TimerWrapper from '@components/TimerWrapper/TimerWrapper';
 import SetupTimerControls from '@components/controls/setup-timer/SetupTimerControls';
+import TimerControls from '@components/controls/timer-counts/TimerControls';
 import FocusTimer from '@components/timers/FocusTimer/FocusTimer';
 
 import Button from '@ui/Button/Button';
@@ -36,6 +37,7 @@ const MainPage = () => {
           {
             {
               'not-started': <SetupTimerControls />,
+              started: <TimerControls />,
             }[stage]
           }
         </ButtonGrid>

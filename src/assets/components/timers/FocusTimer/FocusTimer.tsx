@@ -36,8 +36,13 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
         stopLocalTimer();
         break;
       }
+
+      case 'started': {
+        startLocalTimer();
+        break;
+      }
     }
-  }, []);
+  }, [stage]);
 
   return (
     <section className={cn(styles.timer, className)} {...props}>

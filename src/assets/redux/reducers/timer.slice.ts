@@ -6,7 +6,7 @@ import { SECONDS_IN_MINUTE } from '@utils/time';
 
 export type TimerContext = {
   time: number;
-  stage: 'not-started';
+  stage: 'not-started' | 'started';
 };
 
 const initialState: TimerContext = {
@@ -17,9 +17,13 @@ const initialState: TimerContext = {
 const timerSlice = createSlice({
   name: 'timer',
   initialState,
-  reducers: {},
+  reducers: {
+    startTimer(state, action: ReduxAction<undefined>) {
+      state.stage = 'started';
+    },
+  },
 });
 
 export default timerSlice.reducer;
-export const {} = timerSlice.actions;
+export const { startTimer } = timerSlice.actions;
 export const initialTimerContext = timerSlice.getInitialState();
