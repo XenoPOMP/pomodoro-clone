@@ -40,7 +40,9 @@ const timerSlice = createSlice({
       state,
       { payload: { elapsed } }: ReduxAction<{ elapsed: number }>
     ) {
-      const currentDate = new Date();
+      if (elapsed === 0) {
+        return;
+      }
 
       state.stats.push({
         time: elapsed,

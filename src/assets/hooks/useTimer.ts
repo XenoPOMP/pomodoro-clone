@@ -64,7 +64,10 @@ export const useTimer = (
     time: localTime,
     startTimer: () => setIsEnabled(true),
     stopTimer: () => setIsEnabled(false),
-    reset: () => setLocalTime(options.initialValue!),
+    reset: () => {
+      setLocalTime(options.initialValue!);
+      setElapsed(0);
+    },
     elapsed,
   };
 };

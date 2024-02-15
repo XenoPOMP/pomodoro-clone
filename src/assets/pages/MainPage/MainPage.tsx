@@ -20,11 +20,13 @@ const MainPage = () => {
   const { stage, stats } = useTimerStore();
 
   useEffect(() => {
+    const obj = stats.map(({ time, date }) => ({
+      time,
+      date: new Date(date),
+    }));
+
     console.log({
-      stats: stats.map(({ time, date }) => ({
-        time,
-        date: new Date(date),
-      })),
+      stats: obj,
     });
   }, [stats]);
 
