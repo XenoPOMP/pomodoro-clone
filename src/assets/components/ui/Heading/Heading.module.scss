@@ -1,0 +1,10 @@
+@import "src/assets/styles/templates";
+
+h1, h2, h3, h4, h5, h6 {
+  &.heading {
+    @apply text-btn-primary-font;
+
+    font-size: toLocalEm(14, 20);
+    line-height: 100%;
+  }
+}
