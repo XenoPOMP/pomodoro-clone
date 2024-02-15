@@ -5,6 +5,7 @@ import { Minus, Plus } from 'lucide-react';
 import { FC, useEffect } from 'react';
 
 import Button from '@ui/Button/Button';
+import TimerBody from '@ui/TimerBody/TimerBody';
 
 import { useFormattedTime } from '@hooks/useFormattedTime';
 import { useTimer } from '@hooks/useTimer';
@@ -35,8 +36,6 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
 
   const { stage, stageHistory, stampStats } = useTimerStore(localTime);
 
-  const { minutes, seconds } = useFormattedTime(localTime);
-
   useEffect(() => {
     switch (stage) {
       case 'not-started': {
@@ -65,29 +64,12 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
 
   return (
     <section className={cn(styles.timer, className)} {...props}>
-      <div className={cn('flex gap-[.5em]')}>
-        <Button
-          isSquare
-          disabled={!(stage === 'not-started' || stage === 'paused')}
-          onClick={() => decrementTimer()}
-        >
-          <Minus width={'1em'} height={'1em'} />
-        </Button>
-
-        <Button
-          isSquare
-          disabled={!(stage === 'not-started' || stage === 'paused')}
-          onClick={() => incrementTimer()}
-        >
-          <Plus width={'1em'} height={'1em'} />
-        </Button>
-      </div>
-
-      <p>
-        {minutes.toFormattedString()}:{seconds.toFormattedString()}
-      </p>
-
-      <p>{elapsed}</p>
+      <TimerBody
+        time={localTime}
+        elapsed={elapsed}
+        incrementTimer={incrementTimer}
+        decrementTimer={decrementTimer}
+      />
     </section>
   );
 };
