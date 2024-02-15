@@ -1,6 +1,6 @@
 @import "src/assets/styles/templates";
 
-section.timerWrapper {
+.timerWrapper {
   font-size: 1rem; // 1em = 20px
   gap: toLocalEm(15, 20);
   display: grid;

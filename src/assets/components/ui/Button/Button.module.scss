@@ -1,0 +1,31 @@
+@import "src/assets/styles/templates";
+
+button.uiButton {
+  $em: 14;
+  $anim: .15s ease;
+
+  font-size: toLocalEm(14, 20); // 1em = 14px
+  border-radius: toLocalEm(7, $em);
+  line-height: 100%;
+
+  @include padding-vertical(toLocalEm(8, $em));
+  @include padding-horizontal(toLocalEm(20, $em));
+
+  transition:
+          $anim color,
+          $anim background-color,
+          $anim scale
+  ;
+
+  &.primary {
+    @apply text-btn-primary-font border-btn-primary-bg;
+
+    border-width: 1px;
+    border-style: solid;
+
+    &:hover {
+      @apply bg-btn-primary-bg-hovered border-btn-primary-bg-hovered
+      text-btn-primary-font-hovered;
+    }
+  }
+}
