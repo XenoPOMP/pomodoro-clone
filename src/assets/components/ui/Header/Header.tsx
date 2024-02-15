@@ -29,7 +29,7 @@ const Header: VariableFC<'header', HeaderProps, 'children'> = ({
       <Pressable
         className={cn(styles.close)}
         onClick={() => {
-          // let ignore = exit(1);
+          let ignore = exit(1);
         }}
       >
         <X width={'0.9375em'} height={'0.9375em'} />
