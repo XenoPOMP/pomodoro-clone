@@ -21,13 +21,14 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
     stopTimer: stopLocalTimer,
     startTimer: startLocalTimer,
     reset: resetLocalTimer,
+    elapsed,
   } = useTimer({
     enabledInitially: false,
     countdown: true,
     initialValue: DEFAULT_TIMER_TIME,
   });
 
-  const { stage, stageHistory } = useTimerStore(localTime);
+  const { stage, stageHistory, stampStats } = useTimerStore(localTime);
 
   const { minutes, seconds } = useFormattedTime(localTime);
 
@@ -38,6 +39,7 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
 
         /** Remember data to stats. */
         if (stageHistory.length > 0) {
+          stampStats(elapsed);
           resetLocalTimer();
         }
 
@@ -58,7 +60,11 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
 
   return (
     <section className={cn(styles.timer, className)} {...props}>
-      {minutes.toFormattedString()}:{seconds.toFormattedString()}
+      <p>
+        {minutes.toFormattedString()}:{seconds.toFormattedString()}
+      </p>
+
+      <p>{elapsed}</p>
     </section>
   );
 };

@@ -32,6 +32,7 @@ export const useTimer = (
   }
 ) => {
   const [localTime, setLocalTime] = useState<number>(options.initialValue!);
+  const [elapsed, setElapsed] = useState<number>(0);
   const [isEnabled, setIsEnabled] = useState<boolean>(
     !!options?.enabledInitially
   );
@@ -48,8 +49,14 @@ export const useTimer = (
       1000
     );
 
+    const elapsedTimerId = setInterval(
+      () => setElapsed(prev => prev + 1),
+      1000
+    );
+
     return () => {
       clearInterval(timerId);
+      clearInterval(elapsedTimerId);
     };
   }, [isEnabled]);
 
@@ -58,5 +65,6 @@ export const useTimer = (
     startTimer: () => setIsEnabled(true),
     stopTimer: () => setIsEnabled(false),
     reset: () => setLocalTime(options.initialValue!),
+    elapsed,
   };
 };

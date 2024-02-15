@@ -5,6 +5,7 @@ import {
   TimerContext,
   changeStage,
   changeTime,
+  stampStats,
 } from '@redux/reducers/timer.slice';
 
 /**
@@ -14,12 +15,16 @@ import {
  */
 export const useTimerStore = (
   sync?: number
-): Pick<TimerContext, 'stage' | 'time' | 'stageHistory'> & {
+): Pick<TimerContext, 'stage' | 'time' | 'stageHistory' | 'stats'> & {
   startTimer: () => void;
   stopTimer: () => void;
   pauseTimer: () => void;
+
+  stampStats: (elapsed: number) => void;
 } => {
-  const { stage, time, stageHistory } = useAppSelector(state => state.timer);
+  const { stage, time, stageHistory, stats } = useAppSelector(
+    state => state.timer
+  );
 
   const dispatch = useAppDispatch();
 
@@ -35,8 +40,10 @@ export const useTimerStore = (
     stage,
     stageHistory,
     time,
+    stats,
     startTimer: () => dispatch(changeStage('started')),
     stopTimer: () => dispatch(changeStage('not-started')),
     pauseTimer: () => dispatch(changeStage('paused')),
+    stampStats: (elapsed: number) => dispatch(stampStats({ elapsed })),
   };
 };

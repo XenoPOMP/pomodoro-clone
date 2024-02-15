@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import { useEffect } from 'react';
 
 import Page from '@components/Page/Page';
 import TimerWrapper from '@components/TimerWrapper/TimerWrapper';
@@ -16,7 +17,13 @@ import { useTimerStore } from '@hooks/useTimerStore';
 import styles from './MainPage.module.scss';
 
 const MainPage = () => {
-  const { stage } = useTimerStore();
+  const { stage, stats } = useTimerStore();
+
+  useEffect(() => {
+    console.log({
+      stats,
+    });
+  }, [stats]);
 
   return (
     <Page
