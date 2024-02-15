@@ -1,7 +1,10 @@
 import { VariableFC } from '@xenopomp/advanced-types';
 
 import cn from 'classnames';
+import { Minus, Plus } from 'lucide-react';
 import { FC, useEffect } from 'react';
+
+import Button from '@ui/Button/Button';
 
 import { useFormattedTime } from '@hooks/useFormattedTime';
 import { useTimer } from '@hooks/useTimer';
@@ -22,6 +25,8 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
     startTimer: startLocalTimer,
     reset: resetLocalTimer,
     elapsed,
+    incrementTimer,
+    decrementTimer,
   } = useTimer({
     enabledInitially: false,
     countdown: true,
@@ -60,6 +65,24 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
 
   return (
     <section className={cn(styles.timer, className)} {...props}>
+      <div className={cn('flex gap-[.5em]')}>
+        <Button
+          isSquare
+          disabled={!(stage === 'not-started' || stage === 'paused')}
+          onClick={() => decrementTimer()}
+        >
+          <Minus width={'1em'} height={'1em'} />
+        </Button>
+
+        <Button
+          isSquare
+          disabled={!(stage === 'not-started' || stage === 'paused')}
+          onClick={() => incrementTimer()}
+        >
+          <Plus width={'1em'} height={'1em'} />
+        </Button>
+      </div>
+
       <p>
         {minutes.toFormattedString()}:{seconds.toFormattedString()}
       </p>

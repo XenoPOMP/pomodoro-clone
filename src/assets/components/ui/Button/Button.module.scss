@@ -23,7 +23,7 @@ button.uiButton {
     border-width: 1px;
     border-style: solid;
 
-    &:hover {
+    &:not(:disabled):hover {
       @apply bg-btn-primary-bg-hovered border-btn-primary-bg-hovered
       text-btn-primary-font-hovered;
     }

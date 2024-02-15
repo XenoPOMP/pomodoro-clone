@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { SECONDS_IN_MINUTE } from '@utils/time';
+
 interface IUserTimerOptions {
   /**
    * If true, timer will be enabled initially.
@@ -60,6 +62,20 @@ export const useTimer = (
     };
   }, [isEnabled]);
 
+  const changeTimerValue = (type: 'increment' | 'decrement') => {
+    switch (type) {
+      case 'increment': {
+        setLocalTime(prev => prev + SECONDS_IN_MINUTE);
+        break;
+      }
+
+      case 'decrement': {
+        setLocalTime(prev => prev - SECONDS_IN_MINUTE);
+        break;
+      }
+    }
+  };
+
   return {
     time: localTime,
     startTimer: () => setIsEnabled(true),
@@ -68,6 +84,8 @@ export const useTimer = (
       setLocalTime(options.initialValue!);
       setElapsed(0);
     },
+    incrementTimer: () => changeTimerValue('increment'),
+    decrementTimer: () => changeTimerValue('decrement'),
     elapsed,
   };
 };

@@ -12,6 +12,7 @@ const Button: VariableFC<typeof Pressable, ButtonProps> = ({
   className,
   children,
   variant = 'primary',
+  isSquare,
   ...props
 }) => {
   const variantClass: Record<Defined<typeof variant>, string> = {
@@ -24,6 +25,7 @@ const Button: VariableFC<typeof Pressable, ButtonProps> = ({
         styles.uiButton,
         variantClass[variant],
         'select-none',
+        isSquare && '!aspect-square !p-0 !flex-center min-w-[2.14em]',
         className
       )}
       {...props}
