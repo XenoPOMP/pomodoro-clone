@@ -7,28 +7,13 @@ import SetupTimerControls from '@components/controls/setup-timer/SetupTimerContr
 import TimerControls from '@components/controls/timer-counts/TimerControls';
 import FocusTimer from '@components/timers/FocusTimer/FocusTimer';
 
-import Button from '@ui/Button/Button';
 import ButtonGrid from '@ui/ButtonGrid/ButtonGrid';
 import Heading from '@ui/Heading/Heading';
 
-import { useNotifications } from '@hooks/useNotifications';
 import { useTimerStore } from '@hooks/useTimerStore';
-
-import styles from './MainPage.module.scss';
 
 const MainPage = () => {
   const { stage, stats } = useTimerStore();
-
-  useEffect(() => {
-    const obj = stats.map(({ time, date }) => ({
-      time,
-      date: new Date(date),
-    }));
-
-    console.log({
-      stats: obj,
-    });
-  }, [stats]);
 
   return (
     <Page
@@ -39,7 +24,15 @@ const MainPage = () => {
       }}
     >
       <TimerWrapper>
-        <Heading className={cn('text-center select-none')}>
+        <Heading
+          className={cn(
+            'text-center select-none',
+            stage !== 'not-started' && 'opacity-0'
+          )}
+          style={{
+            transition: '.15s ease opacity',
+          }}
+        >
           Setup focus time
         </Heading>
 
