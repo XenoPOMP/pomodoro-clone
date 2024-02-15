@@ -3,6 +3,7 @@ import cn from 'classnames';
 import Page from '@components/Page/Page';
 import TimerWrapper from '@components/TimerWrapper/TimerWrapper';
 
+import ButtonGrid from '@ui/ButtonGrid/ButtonGrid';
 import Heading from '@ui/Heading/Heading';
 
 import { useNotifications } from '@hooks/useNotifications';
@@ -23,7 +24,11 @@ const MainPage = () => {
 
         <div className={cn('bg-red-600')}>Body</div>
 
-        <div></div>
+        <ButtonGrid>
+          <div>Sus</div>
+          <div>Sus</div>
+          <div>Sus</div>
+        </ButtonGrid>
       </TimerWrapper>
     </Page>
   );

@@ -2,6 +2,7 @@ import { Config } from 'tailwindcss';
 import tailwindThemer from 'tailwindcss-themer';
 
 import { defaultTheme, lightTheme, themesMap } from './src/assets/themes';
+import { CustomClassesPlugin } from './src/assets/themes/plugins';
 
 const twConfig: Config = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
@@ -20,6 +21,7 @@ const twConfig: Config = {
         },
       ],
     }),
+    CustomClassesPlugin(),
   ],
 };
 

@@ -11,7 +11,14 @@ const ButtonGrid: VariableFC<'section', ButtonGridProps> = ({
   children,
   ...props
 }) => {
-  return <section></section>;
+  return (
+    <section
+      className={cn(styles.grid, 'flex-center gap-[.5em]', className)}
+      {...props}
+    >
+      {children}
+    </section>
+  );
 };
 
 export default ButtonGrid;
