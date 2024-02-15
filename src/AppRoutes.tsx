@@ -2,8 +2,10 @@ import { AnimatePresence } from 'framer-motion';
 import React, { FC } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
+import ChartPage from '@pages/ChartPage/ChartPage';
 import MainPage from '@pages/MainPage/MainPage';
 import NotFound from '@pages/NotFound/NotFound';
+import SettingsPage from '@pages/SettingsPage/SettingsPage';
 
 /**
  * Root component of application routes.
@@ -28,6 +30,8 @@ const AppRoutes: FC<{
     return (
       <Routes location={location} key={location.pathname}>
         <Route path={'*'} element={<NotFound />} />
+
+        <Route path={'/charts'} element={<ChartPage />} />
 
         <Route path={'/'} element={<MainPage />} index />
       </Routes>

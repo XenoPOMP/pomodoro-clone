@@ -19,7 +19,11 @@ const Footer: VariableFC<'footer', FooterProps, 'children'> = ({
   return (
     <footer className={cn(styles.appFooter, className)} {...props}>
       <section className={cn(styles.part, '!justify-start')}>
-        <Pressable disabled>
+        <Pressable
+          onClick={() => {
+            navigate('/charts');
+          }}
+        >
           <BarChart3 width={'.75em'} height={'.75em'} />
         </Pressable>
       </section>
