@@ -7,6 +7,8 @@ import Button from '@ui/Button/Button';
 import { useFormattedTime } from '@hooks/useFormattedTime';
 import { useTimerStore } from '@hooks/useTimerStore';
 
+import { MAXIMUM_TIME_ALLOWED, SECONDS_IN_MINUTE } from '@utils/time';
+
 import styles from './TimerBody.module.scss';
 import type { TimerBodyProps } from './TimerBody.props';
 
@@ -27,13 +29,13 @@ const TimerBody: FC<TimerBodyProps> = ({
       <article
         className={cn(
           styles.control,
-          areControlsHidden && styles.hidden,
+          (areControlsHidden || time <= SECONDS_IN_MINUTE) && styles.hidden,
           '!justify-end'
         )}
       >
         <Button
           isSquare
-          disabled={areControlsHidden}
+          disabled={areControlsHidden || time <= SECONDS_IN_MINUTE}
           onClick={() => decrementTimer()}
         >
           <Minus width={'1em'} height={'1em'} />
@@ -47,13 +49,13 @@ const TimerBody: FC<TimerBodyProps> = ({
       <article
         className={cn(
           styles.control,
-          areControlsHidden && styles.hidden,
+          (areControlsHidden || time >= MAXIMUM_TIME_ALLOWED) && styles.hidden,
           '!justify-start'
         )}
       >
         <Button
           isSquare
-          disabled={areControlsHidden}
+          disabled={areControlsHidden || time >= MAXIMUM_TIME_ALLOWED}
           onClick={() => incrementTimer()}
         >
           <Plus width={'1em'} height={'1em'} />
