@@ -20,6 +20,7 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
     time: localTime,
     stopTimer: stopLocalTimer,
     startTimer: startLocalTimer,
+    reset: resetLocalTimer,
   } = useTimer({
     enabledInitially: false,
     countdown: true,
@@ -34,6 +35,12 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
     switch (stage) {
       case 'not-started': {
         stopLocalTimer();
+
+        /** Remember data to stats. */
+        if (stageHistory.length > 0) {
+          resetLocalTimer();
+        }
+
         break;
       }
 
