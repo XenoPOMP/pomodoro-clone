@@ -18,11 +18,11 @@ const TimerBody: FC<TimerBodyProps> = ({
 }) => {
   const { stage } = useTimerStore(time);
 
-  const { minutes, seconds } = useFormattedTime(time);
+  const formattedTime = useFormattedTime(time);
 
   return (
-    <>
-      <div className={cn('flex gap-[.5em]')}>
+    <section className={cn(styles.timerBody)}>
+      <article className={cn(styles.control, '!justify-end')}>
         <Button
           isSquare
           disabled={!(stage === 'not-started' || stage === 'paused')}
@@ -30,7 +30,13 @@ const TimerBody: FC<TimerBodyProps> = ({
         >
           <Minus width={'1em'} height={'1em'} />
         </Button>
+      </article>
 
+      <article className={cn(styles.control, styles.time)}>
+        {formattedTime}
+      </article>
+
+      <article className={cn(styles.control, '!justify-start')}>
         <Button
           isSquare
           disabled={!(stage === 'not-started' || stage === 'paused')}
@@ -38,14 +44,8 @@ const TimerBody: FC<TimerBodyProps> = ({
         >
           <Plus width={'1em'} height={'1em'} />
         </Button>
-      </div>
-
-      <p>
-        {minutes.toFormattedString()}:{seconds.toFormattedString()}
-      </p>
-
-      <p>{elapsed}</p>
-    </>
+      </article>
+    </section>
   );
 };
 

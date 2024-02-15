@@ -1,0 +1,20 @@
+@import "src/assets/styles/templates";
+
+section.timerBody {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 350px 1fr;
+
+  article.control {
+    @apply flex-center;
+
+    height: 100%;
+
+    &.time {
+      @apply font-bold;
+
+      font-size: toLocalEm(74, 20); // 1em = 74px
+
+    }
+  }
+}

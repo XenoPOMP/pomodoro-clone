@@ -1,3 +1,4 @@
 export const SECONDS_IN_MINUTE = 60;
+export const SECONDS_IN_HOUR = SECONDS_IN_MINUTE * 60;
 
 export const DEFAULT_TIMER_TIME = SECONDS_IN_MINUTE * 25;

@@ -1,17 +1,14 @@
 import { VariableFC } from '@xenopomp/advanced-types';
 
 import cn from 'classnames';
-import { Minus, Plus } from 'lucide-react';
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 
-import Button from '@ui/Button/Button';
 import TimerBody from '@ui/TimerBody/TimerBody';
 
-import { useFormattedTime } from '@hooks/useFormattedTime';
 import { useTimer } from '@hooks/useTimer';
 import { useTimerStore } from '@hooks/useTimerStore';
 
-import { DEFAULT_TIMER_TIME, SECONDS_IN_MINUTE } from '@utils/time';
+import { DEFAULT_TIMER_TIME } from '@utils/time';
 
 import styles from './FocusTimer.module.scss';
 import type { FocusTimerProps } from './FocusTimer.props';
