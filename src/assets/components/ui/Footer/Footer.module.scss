@@ -1,6 +1,10 @@
 @import "src/assets/styles/templates";
 
 footer.appFooter {
+  @extend %notSelectable;
+
+  @apply flex justify-end gap-[.5em];
+
   @include padding-horizontal(1.5rem);
 
   padding-top: toLocalEm(15, 20);
