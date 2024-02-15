@@ -1,7 +1,7 @@
 import { VariableFC } from '@xenopomp/advanced-types';
 
 import cn from 'classnames';
-import { Cog } from 'lucide-react';
+import { BarChart3, Cog, Pin } from 'lucide-react';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -18,15 +18,23 @@ const Footer: VariableFC<'footer', FooterProps, 'children'> = ({
 
   return (
     <footer className={cn(styles.appFooter, className)} {...props}>
-      <Pressable
-        disabled
-        onClick={() => {
-          // TODO Add redirection to settings
-          // navigate('/settings');
-        }}
-      >
-        <Cog width={'.75em'} height={'.75em'} />
-      </Pressable>
+      <section className={cn(styles.part, '!justify-start')}>
+        <Pressable disabled>
+          <BarChart3 width={'.75em'} height={'.75em'} />
+        </Pressable>
+      </section>
+
+      <section className={cn(styles.part)}></section>
+
+      <section className={cn(styles.part, '!justify-end')}>
+        {/*<Pressable disabled>*/}
+        {/*  <Pin width={'.75em'} height={'.75em'} />*/}
+        {/*</Pressable>*/}
+
+        <Pressable disabled>
+          <Cog width={'.75em'} height={'.75em'} />
+        </Pressable>
+      </section>
     </footer>
   );
 };
