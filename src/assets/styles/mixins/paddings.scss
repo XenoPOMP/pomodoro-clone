@@ -2,3 +2,8 @@
   padding-left: $val;
   padding-right: $val;
 }
+
+@mixin padding-vertical($val) {
+  padding-top: $val;
+  padding-bottom: $val;
+}
