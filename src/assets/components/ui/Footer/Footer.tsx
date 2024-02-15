@@ -19,6 +19,7 @@ const Footer: VariableFC<'footer', FooterProps, 'children'> = ({
   return (
     <footer className={cn(styles.appFooter, className)} {...props}>
       <Pressable
+        disabled
         onClick={() => {
           // TODO Add redirection to settings
           // navigate('/settings');

@@ -1,7 +1,18 @@
 button.pressable {
-  transition: scale .15s ease;
+  $transition: .15s ease;
 
-  &:active {
-    scale: .925;
+  transition:
+          scale $transition,
+          opacity $transition
+  ;
+
+  &:not(&:disabled) {
+    &:active {
+      scale: .925;
+    }
+  }
+
+  &:disabled {
+    @apply opacity-30;
   }
 }
