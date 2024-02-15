@@ -20,7 +20,12 @@ const Button: VariableFC<typeof Pressable, ButtonProps> = ({
 
   return (
     <Pressable
-      className={cn(styles.uiButton, variantClass[variant], className)}
+      className={cn(
+        styles.uiButton,
+        variantClass[variant],
+        'select-none',
+        className
+      )}
       {...props}
     >
       {children}

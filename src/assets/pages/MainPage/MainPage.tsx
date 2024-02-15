@@ -2,6 +2,7 @@ import cn from 'classnames';
 
 import Page from '@components/Page/Page';
 import TimerWrapper from '@components/TimerWrapper/TimerWrapper';
+import SetupTimerControls from '@components/controls/setup-timer/SetupTimerControls';
 
 import Button from '@ui/Button/Button';
 import ButtonGrid from '@ui/ButtonGrid/ButtonGrid';
@@ -26,7 +27,7 @@ const MainPage = () => {
         <div className={cn('bg-red-600')}>Body</div>
 
         <ButtonGrid>
-          <Button>Click me</Button>
+          <SetupTimerControls />
         </ButtonGrid>
       </TimerWrapper>
     </Page>
