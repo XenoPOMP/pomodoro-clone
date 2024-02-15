@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import type { ReduxAction } from '@redux/types';
 
-import { SECONDS_IN_MINUTE } from '@utils/time';
+import { DEFAULT_TIMER_TIME, SECONDS_IN_MINUTE } from '@utils/time';
 
 export type TimerContext = {
   time: number;
@@ -10,7 +10,7 @@ export type TimerContext = {
 };
 
 const initialState: TimerContext = {
-  time: SECONDS_IN_MINUTE * 25,
+  time: 0,
   stage: 'not-started',
 };
 
@@ -18,12 +18,16 @@ const timerSlice = createSlice({
   name: 'timer',
   initialState,
   reducers: {
-    startTimer(state, action: ReduxAction<undefined>) {
-      state.stage = 'started';
+    changeStage(state, { payload }: ReduxAction<TimerContext['stage']>) {
+      state.stage = payload;
+    },
+
+    changeTime(state, { payload }: ReduxAction<TimerContext['time']>) {
+      state.time = payload;
     },
   },
 });
 
 export default timerSlice.reducer;
-export const { startTimer } = timerSlice.actions;
+export const { changeStage, changeTime } = timerSlice.actions;
 export const initialTimerContext = timerSlice.getInitialState();
