@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 
 import TimerBody from '@ui/TimerBody/TimerBody';
 
+import { useNotifications } from '@hooks/useNotifications';
 import { useTimer } from '@hooks/useTimer';
 import { useTimerStore } from '@hooks/useTimerStore';
 
@@ -17,6 +18,8 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
   className,
   ...props
 }) => {
+  const { sendNotification } = useNotifications();
+
   const {
     time: localTime,
     stopTimer: stopLocalTimer,
@@ -31,7 +34,14 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
     initialValue: DEFAULT_TIMER_TIME,
   });
 
-  const { stage, stageHistory, stampStats } = useTimerStore(localTime);
+  const { stage, stageHistory, stampStats, stopTimer } =
+    useTimerStore(localTime);
+
+  const stop = () => {
+    stampStats(elapsed);
+    resetLocalTimer();
+    stopTimer();
+  };
 
   useEffect(() => {
     switch (stage) {
@@ -40,8 +50,7 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
 
         /** Remember data to stats. */
         if (stageHistory.length > 0) {
-          stampStats(elapsed);
-          resetLocalTimer();
+          stop();
         }
 
         break;
@@ -59,8 +68,20 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
     }
   }, [stage]);
 
+  useEffect(() => {
+    if (localTime <= 0) {
+      let ignore = sendNotification({
+        title: 'Pomogenius',
+        body: 'Session ended. Please, take a break!',
+        sound: 'default',
+      });
+
+      stop();
+    }
+  }, [localTime]);
+
   return (
-    <section className={cn(styles.timer, className)} {...props}>
+    <section className={cn(styles.timer, 'select-none', className)} {...props}>
       <TimerBody
         time={localTime}
         elapsed={elapsed}

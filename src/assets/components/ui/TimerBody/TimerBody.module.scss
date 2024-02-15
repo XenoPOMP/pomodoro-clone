@@ -9,6 +9,11 @@ section.timerBody {
     @apply flex-center;
 
     height: 100%;
+    transition: opacity .15s ease;
+
+    &.hidden {
+      opacity: 0;
+    }
 
     &.time {
       @apply font-bold;

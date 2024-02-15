@@ -20,12 +20,20 @@ const TimerBody: FC<TimerBodyProps> = ({
 
   const formattedTime = useFormattedTime(time);
 
+  const areControlsHidden = !(stage === 'not-started' || stage === 'paused');
+
   return (
     <section className={cn(styles.timerBody)}>
-      <article className={cn(styles.control, '!justify-end')}>
+      <article
+        className={cn(
+          styles.control,
+          areControlsHidden && styles.hidden,
+          '!justify-end'
+        )}
+      >
         <Button
           isSquare
-          disabled={!(stage === 'not-started' || stage === 'paused')}
+          disabled={areControlsHidden}
           onClick={() => decrementTimer()}
         >
           <Minus width={'1em'} height={'1em'} />
@@ -36,10 +44,16 @@ const TimerBody: FC<TimerBodyProps> = ({
         {formattedTime}
       </article>
 
-      <article className={cn(styles.control, '!justify-start')}>
+      <article
+        className={cn(
+          styles.control,
+          areControlsHidden && styles.hidden,
+          '!justify-start'
+        )}
+      >
         <Button
           isSquare
-          disabled={!(stage === 'not-started' || stage === 'paused')}
+          disabled={areControlsHidden}
           onClick={() => incrementTimer()}
         >
           <Plus width={'1em'} height={'1em'} />
