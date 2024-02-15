@@ -6,12 +6,14 @@ import { DEFAULT_TIMER_TIME, SECONDS_IN_MINUTE } from '@utils/time';
 
 export type TimerContext = {
   time: number;
-  stage: 'not-started' | 'started';
+  stage: 'not-started' | 'started' | 'paused';
+  stageHistory: Array<TimerContext['stage']>;
 };
 
 const initialState: TimerContext = {
   time: 0,
   stage: 'not-started',
+  stageHistory: [],
 };
 
 const timerSlice = createSlice({
@@ -20,6 +22,8 @@ const timerSlice = createSlice({
   reducers: {
     changeStage(state, { payload }: ReduxAction<TimerContext['stage']>) {
       state.stage = payload;
+
+      state.stageHistory.push(payload);
     },
 
     changeTime(state, { payload }: ReduxAction<TimerContext['time']>) {

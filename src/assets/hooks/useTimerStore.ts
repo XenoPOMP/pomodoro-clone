@@ -14,11 +14,12 @@ import {
  */
 export const useTimerStore = (
   sync?: number
-): Pick<TimerContext, 'stage' | 'time'> & {
+): Pick<TimerContext, 'stage' | 'time' | 'stageHistory'> & {
   startTimer: () => void;
   stopTimer: () => void;
+  pauseTimer: () => void;
 } => {
-  const { stage, time } = useAppSelector(state => state.timer);
+  const { stage, time, stageHistory } = useAppSelector(state => state.timer);
 
   const dispatch = useAppDispatch();
 
@@ -32,10 +33,10 @@ export const useTimerStore = (
 
   return {
     stage,
+    stageHistory,
     time,
     startTimer: () => dispatch(changeStage('started')),
-    stopTimer: () => {
-      dispatch(changeStage('not-started'));
-    },
+    stopTimer: () => dispatch(changeStage('not-started')),
+    pauseTimer: () => dispatch(changeStage('paused')),
   };
 };

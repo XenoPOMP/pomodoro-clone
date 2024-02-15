@@ -38,6 +38,7 @@ const MainPage = () => {
             {
               'not-started': <SetupTimerControls />,
               started: <TimerControls />,
+              paused: <TimerControls isPaused />,
             }[stage]
           }
         </ButtonGrid>

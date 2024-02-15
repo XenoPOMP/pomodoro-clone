@@ -26,7 +26,7 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
     initialValue: DEFAULT_TIMER_TIME,
   });
 
-  const { stage } = useTimerStore(localTime);
+  const { stage, stageHistory } = useTimerStore(localTime);
 
   const { minutes, seconds } = useFormattedTime(localTime);
 
@@ -39,6 +39,11 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
 
       case 'started': {
         startLocalTimer();
+        break;
+      }
+
+      case 'paused': {
+        stopLocalTimer();
         break;
       }
     }

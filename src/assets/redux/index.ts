@@ -34,6 +34,7 @@ const persistConfig = getPersistConfig({
     'appSettings.appName',
     'timer.time',
     'timer.stage',
+    'timer.stageHistory',
   ],
   rootReducer,
 });
