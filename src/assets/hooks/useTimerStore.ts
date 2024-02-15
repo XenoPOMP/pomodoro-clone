@@ -25,7 +25,7 @@ export const useTimerStore = (
 
   useEffect(() => {
     if (sync) {
-      console.log(`Set store value ${time} to sync (${sync}).`);
+      // console.log(`Set store value ${time} to sync (${sync}).`);
 
       dispatch(changeTime(sync));
     }
