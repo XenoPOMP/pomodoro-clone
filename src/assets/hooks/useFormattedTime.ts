@@ -2,6 +2,26 @@ import { useMemo } from 'react';
 
 import { SECONDS_IN_HOUR, SECONDS_IN_MINUTE } from '@utils/time';
 
+const formatPart = (inp: number): string => {
+  if (inp < 10) {
+    return `0${inp}`;
+  }
+
+  return `${inp}`;
+};
+
+const convertSeconds = (seconds: number) => {
+  const hours = Math.floor(seconds / 60 / 60);
+  const minutes = Math.floor((seconds / 60) % 60);
+  const secondsLeft = Math.floor(seconds % 60);
+
+  return {
+    hours,
+    minutes,
+    secondsLeft,
+  };
+};
+
 /**
  * Parse time.
  * @param time
@@ -11,12 +31,15 @@ import { SECONDS_IN_HOUR, SECONDS_IN_MINUTE } from '@utils/time';
  */
 export const useFormattedTime = (time: number): string => {
   return useMemo(() => {
-    const result = new Date(time * 1000).toISOString().slice(11, 19);
+    const { hours, minutes, secondsLeft } = convertSeconds(time);
 
-    if (time < SECONDS_IN_HOUR) {
-      return result.slice(3, result.length);
+    /** Time is bigger than 1 hour. */
+    if (hours > 0) {
+      return `${formatPart(hours)}:${formatPart(minutes)}:${formatPart(
+        secondsLeft
+      )}`;
     }
 
-    return result;
+    return `${formatPart(minutes)}:${formatPart(secondsLeft)}`;
   }, [time]);
 };
