@@ -22,6 +22,8 @@ const MainPage = () => {
         <Heading className={cn('text-center')}>Setup focus time</Heading>
 
         <div className={cn('bg-red-600')}>Body</div>
+
+        <div></div>
       </TimerWrapper>
     </Page>
   );

@@ -6,15 +6,15 @@ import { FC } from 'react';
 import styles from './TimerWrapper.module.scss';
 import type { TimerWrapperProps } from './TimerWrapper.props';
 
-const TimerWrapper: VariableFC<'section', TimerWrapperProps> = ({
+const TimerWrapper: VariableFC<'div', TimerWrapperProps> = ({
   className,
   children,
   ...props
 }) => {
   return (
-    <section className={cn(styles.timerWrapper, className)} {...props}>
+    <div className={cn(styles.timerWrapper, className)} {...props}>
       {children}
-    </section>
+    </div>
   );
 };
 

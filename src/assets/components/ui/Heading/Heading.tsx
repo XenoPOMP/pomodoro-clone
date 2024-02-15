@@ -1,7 +1,6 @@
 import { VariableFC } from '@xenopomp/advanced-types';
 
 import cn from 'classnames';
-import { ElementType, FC, HTMLAttributes } from 'react';
 
 import styles from './Heading.module.scss';
 import type { HeadingProps } from './Heading.props';
