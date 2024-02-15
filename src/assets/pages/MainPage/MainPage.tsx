@@ -21,7 +21,10 @@ const MainPage = () => {
 
   useEffect(() => {
     console.log({
-      stats,
+      stats: stats.map(({ time, date }) => ({
+        time,
+        date: new Date(date),
+      })),
     });
   }, [stats]);
 

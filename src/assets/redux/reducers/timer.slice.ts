@@ -5,7 +5,7 @@ import type { ReduxAction } from '@redux/types';
 import { DEFAULT_TIMER_TIME, SECONDS_IN_MINUTE } from '@utils/time';
 
 export type Stat = Pick<TimerContext, 'time'> & {
-  // date: Date;
+  date: number;
 };
 
 export type TimerContext = {
@@ -40,9 +40,11 @@ const timerSlice = createSlice({
       state,
       { payload: { elapsed } }: ReduxAction<{ elapsed: number }>
     ) {
+      const currentDate = new Date();
+
       state.stats.push({
         time: elapsed,
-        // date: new Date(),
+        date: Date.now(),
       });
     },
   },
