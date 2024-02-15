@@ -3,6 +3,7 @@ import cn from 'classnames';
 import Page from '@components/Page/Page';
 import TimerWrapper from '@components/TimerWrapper/TimerWrapper';
 import SetupTimerControls from '@components/controls/setup-timer/SetupTimerControls';
+import FocusTimer from '@components/timers/FocusTimer/FocusTimer';
 
 import Button from '@ui/Button/Button';
 import ButtonGrid from '@ui/ButtonGrid/ButtonGrid';
@@ -25,9 +26,11 @@ const MainPage = () => {
       }}
     >
       <TimerWrapper>
-        <Heading className={cn('text-center')}>Setup focus time</Heading>
+        <Heading className={cn('text-center select-none')}>
+          Setup focus time
+        </Heading>
 
-        <div className={cn('bg-red-600')}>Body</div>
+        <FocusTimer />
 
         <ButtonGrid>
           {
