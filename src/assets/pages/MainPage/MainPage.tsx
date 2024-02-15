@@ -9,10 +9,13 @@ import ButtonGrid from '@ui/ButtonGrid/ButtonGrid';
 import Heading from '@ui/Heading/Heading';
 
 import { useNotifications } from '@hooks/useNotifications';
+import { useTimerStore } from '@hooks/useTimerStore';
 
 import styles from './MainPage.module.scss';
 
 const MainPage = () => {
+  const { stage } = useTimerStore();
+
   return (
     <Page
       meta={{
@@ -27,7 +30,11 @@ const MainPage = () => {
         <div className={cn('bg-red-600')}>Body</div>
 
         <ButtonGrid>
-          <SetupTimerControls />
+          {
+            {
+              'not-started': <SetupTimerControls />,
+            }[stage]
+          }
         </ButtonGrid>
       </TimerWrapper>
     </Page>

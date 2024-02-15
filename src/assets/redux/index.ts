@@ -3,31 +3,38 @@ import {
   configureStore,
   getDefaultMiddleware,
 } from '@reduxjs/toolkit';
+import { getPersistConfig } from 'redux-deep-persist';
 import {
-  persistStore,
-  persistReducer,
   FLUSH,
-  REHYDRATE,
   PAUSE,
   PERSIST,
   PURGE,
   REGISTER,
+  REHYDRATE,
+  persistReducer,
+  persistStore,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { getPersistConfig } from 'redux-deep-persist';
 
 import appSettingsSlice from '@redux/reducers/appSettingsSlice';
+import timerSlice from '@redux/reducers/timer.slice';
 
 /** App`s root reducer. */
 const rootReducer = combineReducers({
   appSettings: appSettingsSlice,
+  timer: timerSlice,
 });
 
 /** Redux-persist config. */
 const persistConfig = getPersistConfig({
   key: 'root',
   storage,
-  blacklist: ['appSettings.appVersion', 'appSettings.appName'],
+  blacklist: [
+    'appSettings.appVersion',
+    'appSettings.appName',
+    'timer.time',
+    'timer.stage',
+  ],
   rootReducer,
 });
 
