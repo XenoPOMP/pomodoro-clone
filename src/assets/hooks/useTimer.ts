@@ -20,6 +20,10 @@ interface IUserTimerOptions {
   initialValue?: number;
 }
 
+/**
+ * Fully manageable timer with hooks.
+ * @param options
+ */
 export const useTimer = (
   options: IUserTimerOptions = {
     enabledInitially: false,

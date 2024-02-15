@@ -3,6 +3,7 @@ import { VariableFC } from '@xenopomp/advanced-types';
 import cn from 'classnames';
 import { FC, useEffect } from 'react';
 
+import { useFormattedTime } from '@hooks/useFormattedTime';
 import { useTimer } from '@hooks/useTimer';
 import { useTimerStore } from '@hooks/useTimerStore';
 
@@ -24,8 +25,10 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
   } = useTimer({
     enabledInitially: false,
     countdown: true,
-    initialValue: SECONDS_IN_MINUTE * 25,
+    initialValue: SECONDS_IN_MINUTE * 25 + 15,
   });
+
+  const { minutes, seconds } = useFormattedTime(localTime);
 
   useEffect(() => {
     switch (stage) {
@@ -38,7 +41,7 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
 
   return (
     <section className={cn(className)} {...props}>
-      {localTime} seconds
+      {minutes.toFormattedString()}:{seconds.toFormattedString()}
     </section>
   );
 };
