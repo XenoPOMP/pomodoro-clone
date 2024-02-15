@@ -40,7 +40,7 @@ const FocusTimer: VariableFC<'section', FocusTimerProps, 'children'> = ({
   }, []);
 
   return (
-    <section className={cn(className)} {...props}>
+    <section className={cn(styles.timer, className)} {...props}>
       {minutes.toFormattedString()}:{seconds.toFormattedString()}
     </section>
   );
