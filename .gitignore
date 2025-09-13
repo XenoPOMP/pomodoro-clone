@@ -101,7 +101,7 @@ typings/
 .DS_Store
 .Thumbs.db
 *.sublime*
-.idea
+#.idea
 debug.log
 package-lock.json
 .vscode/settings.json
