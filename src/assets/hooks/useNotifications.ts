@@ -4,7 +4,7 @@ import {
   isPermissionGranted,
   requestPermission,
   sendNotification,
-} from '@tauri-apps/api/notification';
+} from '@tauri-apps/plugin-notification';
 
 interface ITauriNotificationsHook {
   sendNotification: ReplaceReturnType<typeof sendNotification, Promise<void>>;

@@ -1,6 +1,6 @@
 import { VariableFC } from '@xenopomp/advanced-types';
 
-import { exit } from '@tauri-apps/api/process';
+import { exit } from '@tauri-apps/plugin-process';
 import cn from 'classnames';
 import { X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
